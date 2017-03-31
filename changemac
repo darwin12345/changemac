@@ -1,0 +1,32 @@
+#!/bin/bash
+# _*_ coding: utf8 _*_
+#CAMBIAR MAC
+echo ""
+echo " -> -> -> INICIANDO <- <- <- "
+echo ""
+echo "COMPRONDO REQUISITOS"
+echo ""
+echo ">>>" && apt-get install macchanger
+echo ""
+echo "ADAPTADORES ="
+echo ""
+
+ifconfig | grep "wlan"
+echo ""
+echo "INTERFAZ >>>" && read inter
+
+echo "---------- CAMBIANDO DIRECCION MAC ------------"
+echo ""
+ifconfig  $inter down 
+
+macchanger -r $inter
+
+ifconfig $interfas up
+
+/etc/init.d/network-manager restart
+echo ""
+echo "------- DIRECCION MAC CAMBIADA ----------------"
+
+#SEGURIDADS
+#AUTOR= Darwin Orellana
+#codigo libre, autorizado su uso y reproducción
